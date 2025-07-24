@@ -12,9 +12,9 @@ func (r Repository) UpdatePerson(data entities.Person) error {
 	SET 
 	name = $1, 
 	date_of_birth = $2,
-	phone = $3,
+	phone = $3
 
-WHERE id = $4;
+	WHERE id = $4;
 `
 
 	_, err := r.connectionInstance.Exec(context.TODO(), query, data.Name, data.DateOfBirth, data.Phone, data.ID)
