@@ -4,6 +4,7 @@ import (
 	"context"
 	"log/slog"
 	"os"
+	"renavam-system/internal/api"
 
 	"github.com/jackc/pgx/v5"
 )
@@ -26,4 +27,7 @@ func main() {
 	}
 
 	slog.Info("Connection successfully established")
+
+	personHandler := api.InitPerson(conn)
+	api.StartApp(personHandler)
 }
