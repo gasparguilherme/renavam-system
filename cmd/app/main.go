@@ -1,5 +1,29 @@
-package app
+package main
+
+import (
+	"context"
+	"log/slog"
+	"os"
+
+	"github.com/jackc/pgx/v5"
+)
 
 func main() {
+	ctx := context.Background()
 
+	dbURL := "postgres://postgres:senha@localhost:5433/renavam_system_db"
+
+	conn, err := pgx.Connect(ctx, dbURL)
+	if err != nil {
+		slog.Error("Error connecting to the database", "error", err.Error())
+		os.Exit(1)
+	}
+	defer conn.Close(ctx)
+
+	if err := conn.Ping(ctx); err != nil {
+		slog.Error("Error when pinging the database", "error", err.Error())
+		os.Exit(1)
+	}
+
+	slog.Info("Connection successfully established")
 }
