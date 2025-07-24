@@ -5,7 +5,8 @@ import (
 	"time"
 )
 
-func (u Usecase) UpdatePerson(id int, newName string, newDateOfBirth time.Time, newPhone string) error {
+func (u Usecase) UpdatePerson(id int, newName string, neWCPF string, newDateOfBirth time.Time,
+	newPhone string, newEmail string) error {
 	person := entities.Person{
 		ID:          id,
 		Name:        newName,
