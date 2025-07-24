@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"net/http"
 	"renavam-system/internal/entities"
+	"renavam-system/internal/handlers/person/validate"
 )
 
 func (h Handler) CreatePersonHandler(w http.ResponseWriter, r *http.Request) {
@@ -13,6 +14,13 @@ func (h Handler) CreatePersonHandler(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&personRequest)
 	if err != nil {
 		slog.Error("unable to interpret JSON", "error", err)
+		return
+	}
+
+	err = validate.ValidatePerson(personRequest.Name, personRequest.CPF, personRequest.DateOfBirth,
+		personRequest.Phone, personRequest.Email)
+	if err != nil {
+		slog.Error("error ao validar usuario", "error", err)
 		return
 	}
 
