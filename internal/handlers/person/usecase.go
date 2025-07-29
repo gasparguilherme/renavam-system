@@ -7,4 +7,5 @@ import (
 
 type Usecase interface {
 	CreatePerson(name, cpf string, date_of_birth time.Time, phone, email string) (*entities.Person, error)
+	UpdatePerson(id int, name string, date_of_birth time.Time, phone string) (int, error)
 }
