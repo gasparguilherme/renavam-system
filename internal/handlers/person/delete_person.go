@@ -11,14 +11,14 @@ func (h Handler) DeletePersonHandler(w http.ResponseWriter, r *http.Request) {
 
 	id, err := strconv.Atoi(rawID)
 	if err != nil {
-		http.Error(w, "ID inválido", http.StatusBadRequest)
+		http.Error(w, "Invalid ID", http.StatusBadRequest)
 		return
 	}
 
 	err = h.usecase.DeletePerson(id)
 	if err != nil {
-		slog.Error("erro ao deletar pessoa com id %d: %v", id, err)
-		http.Error(w, "Erro ao deletar pessoa", http.StatusInternalServerError)
+		slog.Error("error when deleting person with id %d: %v", id, err)
+		http.Error(w, "Error deleting person", http.StatusInternalServerError)
 		return
 	}
 

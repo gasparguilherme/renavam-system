@@ -20,7 +20,7 @@ func (h Handler) CreatePersonHandler(w http.ResponseWriter, r *http.Request) {
 	err = validate.ValidatePerson(personRequest.Name, personRequest.CPF, personRequest.DateOfBirth,
 		personRequest.Phone, personRequest.Email)
 	if err != nil {
-		slog.Error("error ao validar usuario", "error", err)
+		slog.Error("error validating user", "error", err)
 		return
 	}
 
