@@ -15,12 +15,11 @@ func (r Repository) SaveVehicle(data entities.Vehicle) (int, error) {
 	year,
 	renavam,
 	personID
-	)
-	RETURNING id;
-	`
+) VALUES ($1, $2, $3, $4, $5, $6, $7)
+RETURNING id;`
 
 	var id int
-	err := r.connectionInstance.QueryRow(context.TODO(), data.LicensePlate, data.Brand, data.Model, data.Color,
+	err := r.connectionInstance.QueryRow(context.TODO(), query, data.LicensePlate, data.Brand, data.Model, data.Color,
 		data.Year, data.Renavam, data.PersonID).Scan(&id)
 
 	if err != nil {
