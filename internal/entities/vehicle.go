@@ -8,5 +8,5 @@ type Vehicle struct {
 	Color        string `json:"color"`
 	Year         int    `json:"year"`
 	Renavam      string `json:"renavam"`
-	PersonID     int    `json:"person_id"`
+	PersonID     int    `json:"personID"`
 }
