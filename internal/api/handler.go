@@ -7,3 +7,7 @@ type PersonHandler interface {
 	UpdatePersonHandler(w http.ResponseWriter, r *http.Request)
 	DeletePersonHandler(w http.ResponseWriter, r *http.Request)
 }
+
+type VehicleHandler interface {
+	CreateVehicleHandler(w http.ResponseWriter, r *http.Request)
+}
