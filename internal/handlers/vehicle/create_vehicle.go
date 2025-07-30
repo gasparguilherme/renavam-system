@@ -25,7 +25,7 @@ func (h Handler) CreateVehicleHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	createVehicle, err := h.usecase.CreateVehicle(vehicleRequest.LicensePlate, vehicleRequest.Brand, vehicleRequest.Model,
-		vehicleRequest.Color, vehicleRequest.Year, vehicleRequest.Renavam)
+		vehicleRequest.Color, vehicleRequest.Year, vehicleRequest.Renavam, vehicleRequest.PersonID)
 	if err != nil {
 		slog.Error("error creating user", "error", err)
 		return

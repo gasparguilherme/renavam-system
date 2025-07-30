@@ -3,7 +3,7 @@ package vehicle
 import "renavam-system/internal/entities"
 
 func (u Usecase) CreateVehicle(license_plate, brand, model, color string, year int,
-	renavam string) (*entities.Vehicle, error) {
+	renavam string, personID int) (*entities.Vehicle, error) {
 
 	vehicle := entities.Vehicle{
 		LicensePlate: license_plate,
@@ -12,6 +12,7 @@ func (u Usecase) CreateVehicle(license_plate, brand, model, color string, year i
 		Color:        color,
 		Year:         year,
 		Renavam:      renavam,
+		PersonID:     personID,
 	}
 
 	id, err := u.repository.SaveVehicle(vehicle)
