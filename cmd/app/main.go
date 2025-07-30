@@ -29,5 +29,7 @@ func main() {
 	slog.Info("Connection successfully established")
 
 	personHandler := api.InitPerson(conn)
-	api.StartApp(personHandler)
+	vehicleHandler := api.InitVehicle(conn)
+
+	api.StartApp(personHandler, vehicleHandler)
 }
