@@ -13,6 +13,7 @@ func StartApp(personHandler PersonHandler, vehicleHandler VehicleHandler) {
 	//rotas-vehicle
 	mux.Handle("POST/vehicle", http.HandlerFunc(vehicleHandler.CreateVehicleHandler))
 	mux.Handle("PUT /vehicle/{id}", http.HandlerFunc(vehicleHandler.UpdateVehicleHandler))
+	mux.Handle("DELETE /vehicle/{id}", http.HandlerFunc(vehicleHandler.DeleteVehicleHandler))
 
 	http.ListenAndServe(":6161", mux)
 }
