@@ -8,4 +8,5 @@ import (
 type Repository interface {
 	SaveVehicle(data entities.Vehicle) (int, error)
 	UpdateVehicle(data dto.UpdateVehicleInput) error
+	DeleteVehicle(id int) error
 }

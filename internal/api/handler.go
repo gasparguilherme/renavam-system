@@ -11,4 +11,5 @@ type PersonHandler interface {
 type VehicleHandler interface {
 	CreateVehicleHandler(w http.ResponseWriter, r *http.Request)
 	UpdateVehicleHandler(w http.ResponseWriter, r *http.Request)
+	DeleteVehicleHandler(w http.ResponseWriter, r *http.Request)
 }
