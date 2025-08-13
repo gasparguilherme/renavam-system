@@ -14,29 +14,29 @@ func (h Handler) UpdatePersonHandler(w http.ResponseWriter, r *http.Request) {
 
 	id, err := strconv.Atoi(rawID)
 	if err != nil {
-		slog.Error("erro ao converter id para inteiro", "id", rawID, "error", err)
-		http.Error(w, "ID invalido", http.StatusBadRequest)
+		slog.Error("error converting id to integer", "id", rawID, "error", err)
+		http.Error(w, "Invalid ID", http.StatusBadRequest)
 		return
 
 	}
 	err = validate.ValidateID(id)
 	if err != nil {
-		slog.Error("erro ao buscar ID", "error", err)
+		slog.Error("error retrieving ID", "error", err)
 		return
 	}
 
 	var input dto.UpdatePersonInput
 	err = json.NewDecoder(r.Body).Decode(&input)
 	if err != nil {
-		slog.Error("erro ao decodificar corpo da requisição", "error", err)
+		slog.Error("error decoding request body", "error", err)
 		return
 	}
 
 	_, err = h.usecase.UpdatePerson(input.ID, input.Name, input.DateOfBirth, input.Phone)
 	if err != nil {
-		slog.Error("erro ao atualizar pessoa", "error", err)
+		slog.Error("error updating person", "error", err)
 		return
 	}
-	slog.Info("pessoa atualizada com sucesso")
+	slog.Info("person successfully updated")
 
 }
