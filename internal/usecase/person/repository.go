@@ -9,4 +9,5 @@ type Repository interface {
 	SavePerson(data entities.Person) (int, error)
 	UpdatePerson(data dto.UpdatePersonInput) (int, error)
 	DeletePerson(id int) error
+	GetVehiclesByPerson(id int) ([]entities.Vehicle, error)
 }

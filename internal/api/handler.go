@@ -6,6 +6,7 @@ type PersonHandler interface {
 	CreatePersonHandler(w http.ResponseWriter, r *http.Request)
 	UpdatePersonHandler(w http.ResponseWriter, r *http.Request)
 	DeletePersonHandler(w http.ResponseWriter, r *http.Request)
+	GetVehiclesByPersonHandler(w http.ResponseWriter, r *http.Request)
 }
 
 type VehicleHandler interface {
